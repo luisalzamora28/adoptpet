@@ -1,0 +1,82 @@
+#divheader{
+    border:2px solid black;
+    height: 70px;
+    padding: 30px;
+    margin:0;
+    background-color: #4C3036;
+    }
+    #logo{
+    width: 100px;
+    height: 60px;
+    margin-top: -25px;
+    margin-left: 30px;
+    padding: 10px;
+    }
+    .search-box{
+    position: absolute;
+    top: 50px;
+    left: 60%;;
+    transform: translate(-50%,-50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    display: flex;
+    margin: 20px;
+    border: 2px solid black;
+    }
+    
+    
+    .search-bton{
+    color:#FFF;
+    float:right;
+    width: 40px;
+    height: 40px;
+    border-radius:50px;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    
+    }
+    .search-txt{
+    border:none;
+    background:none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 240px;
+    }
+    #shopping-cart{
+    height: 50px;
+    width: 30px;
+    float: right;
+    margin-top: -50px;
+    margin-right: 120px;
+    }
+    #shopping-cart .fa.fa-shopping-basket{
+    font-size:60px;
+    color: #fff;
+    }
+    
+    #menu{
+    border:2px solid black;
+    background-color: #2f3640;
+    padding: 5px 50px;
+    }
+    #menu ul{
+    margin: 5px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; 
+    }
+    #menu ul li, #menu ul li a{
+        display: inline-block;
+        color: #fff;
+        line-height: 30px;
+        text-decoration: none;
+    }
