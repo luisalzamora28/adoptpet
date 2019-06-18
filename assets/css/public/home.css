@@ -1,0 +1,16 @@
+/*----------------------------------------GENERAL*/
+/*-----------------------------------------LOADER*/
+/*-----------------------------------------HEADER*/
+/*-----------------------------------------SCROLL*/
+#slider{width:100%;height:100%;}
+.slick-list{height:100%;width:100%;}
+.slick-track{height:100%;width:100%;}
+.slick-item{height:100%;position:relative;}
+.slick-item:focus{outline:none;}
+.slide-data{position:absolute;bottom:60px;left:50%;transform:translate(-50%,0%);}
+.slide-data .title{text-align:center;font-family:"CG bold", "Calibri";font-size:60px;color:#fff;}
+/*----------------------------------------SECTION*/
+section{padding-top:0px;min-height:calc(100% - 0px);height:100%;}
+section>.contentWrapper{width:100%;max-width:none;}
+/*-----------------------------------------FOOTER*/
+/*-------------------------------------RESPONSIVE*/

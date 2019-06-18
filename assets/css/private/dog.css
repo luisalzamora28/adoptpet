@@ -1,0 +1,12 @@
+/*----------------------------------------GENERAL*/
+/*-----------------------------------------LOADER*/
+/*-----------------------------------------HEADER*/
+/*-----------------------------------------SCROLL*/
+/*----------------------------------------SECTION*/
+#link_dog_create{display:block;padding:10px;width:100%;max-width:250px;text-align:center;}
+#link_dog_create{margin:20px auto;color:#fff;background-color:#888;}
+#link_dog_create:hover{background-color:#555;}
+#list_dogs{margin-bottom:40px;}
+.link_dog_show_edit{color:#333 !important;font-weight:bold;text-decoration:underline !important;}
+/*-----------------------------------------FOOTER*/
+/*-------------------------------------RESPONSIVE*/

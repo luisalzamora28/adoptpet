@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# Add here your error pages (according to your current domain defined in settings/environment.php)
+ErrorDocument 404 http://localhost/00_propio/adoptpet/error
+ErrorDocument 403 http://localhost/00_propio/adoptpet/error
+
+# For redirecting if user browses any of these folders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(settings|controllers|functions|views)(/.*)?$ - [F,NC,L]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(adoptpet\.sql)$ - [F,NC,L]
+
+# For enabling acess to files but not folders in assets
+RewriteRule ^(assets)/(.+)$ assets/$2 [NC,L]
+RewriteRule ^(assets)(/?)$ - [F,NC,L]
+Options -Indexes
+
+# -- Syntax if you want to define interfaces by names and not by abbreviations (for each interface).
+# -- You should also modify the function 'route' in global.php
+RewriteRule ^(intranet)/(\w+)/(.*)$ index.php?i=i&p=$2&f=$3 [QSA,NC,L]
+RewriteRule ^(intranet)/(\w+)$ index.php?i=i&p=$2 [QSA,NC,L]
+RewriteRule ^(intranet)(/?)$ index.php?i=i [QSA,NC,L]
+
+# -- Interface Redirector
+RewriteRule ^(\w+)/(.*)$ index.php?i=p&p=$1&f=$2 [QSA,NC,L]
+RewriteRule ^(\w+)$ index.php?i=p&p=$1 [QSA,NC,L]
+RewriteRule ^(/?)$ index.php?i=p [QSA,NC,L]

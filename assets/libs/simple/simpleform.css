@@ -1,0 +1,31 @@
+/*-------------------------------------FORMULARIO*/
+.sf-wrapper{width:100%;max-width:600px;margin:20px auto;}
+.sf-title, .sf-input, .sf-textarea, .sf-file{margin-bottom:10px;}
+.sf-container, .sf-group{width:100%;}
+.sf-group:after{content:"";display:table;clear:both;}
+.sf-textarea{resize:vertical;min-height:100px;}
+.sf-input, .sf-textarea, .sf-button{display:block;border:none;background-color:#fff;}
+.sf-input, .sf-textarea, .sf-button{padding:10px 5px;font-family:inherit !important;}
+.sf-input, .sf-textarea, .sf-label{width:calc(100% - 20px);margin:0px 10px 10px 10px;}
+.sf-input, .sf-textarea{border:1px solid #ccc;}
+.sf-button{border:1px solid #777;color:#777;margin:auto;font-weight:bold;}
+.sf-button:hover{cursor:pointer;background-color:#eee;}
+
+.sf-label{margin-bottom:2px;display:block;}
+
+.sf-file-container{width:50%;padding:0px 10px;float:left;}
+.sf-pair-container{width:50%;padding:0px 10px;float:left;}
+
+.sf-file{width:100%;border-radius:5px;overflow:hidden;color:#fff;}
+.sf-file{text-align:center;background-color: #333;position:relative;}
+.sf-file span{font-size:60px;position:absolute;top:50%;color:#fff;}
+.sf-file span{transform:translate(-50%,-50%);text-align:center;}
+.sf-file input{display:block;opacity:0;width:100%;height:100%;overflow:hidden;}
+.sf-file input{position:absolute;width:100%;height:100%;top:0;left:0;z-index:30;}
+.sf-file-del{position:absolute;top:0px;right:0px;padding:5px 10px;color:#fff;}
+.sf-file-del{background-color:#f00;text-align:center;z-index:32;}
+.sf-file-title{position:absolute;top:50%;left:0%;transform:translateY(-50%);color:#fff;z-index:28;}
+
+@media screen and (max-width:460px) {
+	.sf-file-container{width:100%;}
+}
