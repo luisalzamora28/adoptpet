@@ -34,8 +34,8 @@
  
 #### Habra un link de donativo para que deposite el monto y ese enlace lo redirigirá  al whatsapp de la persona que se encarga de cobrar
 
-#### Cuando se haya confirmado su 
-#### Luego pasara a pagar 
+#### Cuando se tenga la confirmación de la adopción de su mascota se le enviará un mensaje para que pueda ir a recogerlo.
 
-#### También la podrá seleccionar, a través de un catálogo, la joyería que desea comprar, el cual al acercarse con el mouse al producto podrá ver una d que consta el producto que tipo d material tiene y de donde proviene y en la parte inferior de la imagen se mostrará el precio y abajo tendrá un botón que dirá “comprar” para que puedas adquirirlo
-#### Otra de las funciones que tendrá será la de poder buscar la joya de acuerdo al precio y al modelo.
+#### También la podrá seleccionar, a través de un catálogo de adopción,  es ver una serie de filtros para que pueda saber su sexo, edad, color, tamaño, si requiere de espacio abierto o si el animal necesita estar solo, asi como su nivel de actividad y tipo de pelo.
+
+#### Otra de las funciones que podrá ver a la mascota de algunas fotos que se encuentran en la página web.
