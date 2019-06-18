@@ -11,21 +11,6 @@ function get_dogs($filters){
 			ORDER BY d.id DESC, r.id ASC";
 	return @get($sql);
 }
-function get_gallery($id,$resources=0){
-	$gallery = @get("SELECT * FROM gallery WHERE id = $id AND status = 1")[0];
-	if(!empty($gallery)&&$resources){
-		$sql = "SELECT * FROM resource WHERE gallery_id = $id AND status = 1 ORDER BY id ASC";
-		$gallery['resources'] = @get($sql);
-	}
-	return $gallery;
-}
-function create_message($data){
-	insertIntoTable('message',$data);return 1;
-}
-
-$GLOBALS['layout_variables'] = [
-	'site'=>@get("SELECT * FROM site")[0]
-];
 
 switch ($function) {
 	case 'home':
