@@ -4,7 +4,7 @@ return [
 	'current'=>'development',
 	'environments'=>[
 		'development'=>[
-			'domain'=>'http://localhost/00_propio/adoptpet/',
+			'domain'=>'http://localhost/adoptpet/',
 			'dbserver'=>'localhost',
 			'dbname'=>'adoptpet',
 			'dbuser'=>'root',

@@ -1,8 +1,8 @@
 RewriteEngine On
 
 # Add here your error pages (according to your current domain defined in settings/environment.php)
-ErrorDocument 404 http://localhost/00_propio/adoptpet/error
-ErrorDocument 403 http://localhost/00_propio/adoptpet/error
+ErrorDocument 404 http://localhost/adoptpet/error
+ErrorDocument 403 http://localhost/adoptpet/error
 
 # For redirecting if user browses any of these folders
 RewriteCond %{REQUEST_FILENAME} !-f
