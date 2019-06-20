@@ -35,6 +35,7 @@
     <section>
         <div id="welcome">
             <div id="title">ADOPTPET</div>
+            <div style="text-align:center;">Administrador</div>
             <?php if(@$error_login) { ?>
                 <div id="error"><?= $message_err ?></div>
             <?php } ?>

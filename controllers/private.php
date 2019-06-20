@@ -40,6 +40,11 @@ function update_message($data){
     updateTableTuple('message',$data,'id');return 1;
 }
 
+if (!@$_SESSION['admin'] && $_option != 'login') {
+    redirect('admin/login');
+    exit();
+}
+
 switch ($_option) {
     case 'login':
         if(notFirstTime() && !empty($userdata = validUser($_POST, 'admin')) && validCaptcha('admin')){

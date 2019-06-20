@@ -68,13 +68,17 @@
     </form>
     <hr>
     <div id="dogsWrapper" style="width:100%;">
-        <?php foreach ($dogs as $dog) { ?><div class="dog" style="width:calc(25% - 10px);padding:5px;">
-            <div class="image bgFull" style="height:150px;background-image:url(<?= asset('img/dog/'.$dog['bg']) ?>)"></div>
+        <?php if (!empty($dogs)) { foreach ($dogs as $dog) { ?><div class="dog">
+            <div class="image bgFull" style="background-image:url(<?= asset('img/dog/'.$dog['bg']) ?>)">
+                <a href="<?= url('dog/show?id='.$dog['id']) ?>" class="link_dog_show trans"><div class="trans"><i class="fa fa-search"></i> Conocer</div></a>
+            </div>
             <div class="details">
                 <h3><?= $dog['name'] ?></h3>
                 <span><?= $dog['sex'] ?> | <?= $dog['age'] ?> años</span>
             </div>
-        </div><?php } ?>
+        </div><?php }} else { ?>
+            No se encontraron resultados para su búsqueda.
+        <?php } ?>
     </div>
 <?php }); ?>
 

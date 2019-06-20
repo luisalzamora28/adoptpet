@@ -11,14 +11,18 @@
     <link rel="stylesheet" href="<?= asset('css/_public.css') ?>">
     <?php
         $links = [
-            ['url' => url('adopt'), 'weight' => 'normal', 'name' => 'Adopta', 'target' => ''],
-            ['url' => url('about'), 'weight' => 'normal', 'name' => 'Nosotros', 'target' => ''],
-            ['url' => url('contact'), 'weight' => 'normal', 'name' => 'Contacto', 'target' => ''],
-            (isset($_SESSION['customer']) ?
-                ['url' => url('dog'), 'weight' => 'normal', 'name' => 'Dashboard', 'target' => ''] :
-                ['url' => url('login'), 'weight' => 'normal', 'name' => '<i class="fa fa-sign-in"></i> Iniciar sesión', 'target' => '']
-            )
+            'adopt' => ['url' => url('adopt'), 'weight' => 'normal', 'name' => 'Adopta', 'target' => '', 'active' => false],
+            'about' => ['url' => url('about'), 'weight' => 'normal', 'name' => 'Nosotros', 'target' => '', 'active' => false],
+            'contact' => ['url' => url('contact'), 'weight' => 'normal', 'name' => 'Contacto', 'target' => '', 'active' => false],
         ];
+        if (isset($_SESSION['customer'])) {
+            $links['dashboard'] = ['url' => url('customer/dog'), 'weight' => 'normal', 'name' => '<i class="fa fa-paw"></i> Perros', 'target' => '', 'active' => false];
+        } else {
+            $links['login'] = ['url' => url('customer/login'), 'weight' => 'normal', 'name' => '<i class="fa fa-sign-in"></i> Iniciar sesión', 'target' => '', 'active' => false];
+        }
+        if(isset($view)){
+            $links[$view]['active'] = true;
+        }
     ?>
 </head>
 <body>
@@ -28,7 +32,7 @@
         <a href="<?= url('home'); ?>" id="logo">ADOPTPET</a>
         <a href="#" id="menu">☰</a>
         <nav><?php foreach ($links as $link) { ?>
-            <a href="<?= $link['url'] ?>"><?= $link['name'] ?></a>
+            <a href="<?= $link['url'] ?>" class="<?= $link['active'] ? 'active' : '' ?>"><?= $link['name'] ?></a>
         <?php } ?></nav>
     </div></header>
     <?php place('main'); ?>

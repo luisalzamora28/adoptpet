@@ -36,6 +36,18 @@ $("#dog_filters").ready(function () {
     });
 });
 
+/* dog */
+$("#dog_slide").slick({
+    arrows : false,
+    infinite : true,
+    fade: true,
+    dots : false,
+    autoplay : true,
+    slidesToShow : 1,
+    speed : 1000,
+    pauseOnHover: false
+});
+
 /* contact */
 $("#captchaWrapper>a").on("click", function(e){
     e.preventDefault();

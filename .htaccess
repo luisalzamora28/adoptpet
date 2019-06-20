@@ -1,8 +1,8 @@
 RewriteEngine On
 
 # Add here your error pages
-ErrorDocument 404 http://localhost/00_propio/adoptpet__/error
-ErrorDocument 403 http://localhost/00_propio/adoptpet__/error
+ErrorDocument 404 http://localhost/00_propio/adoptpet/error
+ErrorDocument 403 http://localhost/00_propio/adoptpet/error
 
 # For redirecting if user browses any of these folders
 RewriteCond %{REQUEST_FILENAME} !-f

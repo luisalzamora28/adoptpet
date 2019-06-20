@@ -11,9 +11,25 @@ function get_dogs($filters){
             ORDER BY d.id DESC, r.id ASC";
     return @get($sql);
 }
+function get_dog($id, $resources = 0){
+    $dog = @get("SELECT * FROM dog WHERE id = $id")[0];
+    if(!empty($dog)&&$resources){
+        $sql = "SELECT * FROM resource WHERE dog_id = $id ORDER BY id DESC";
+        $dog['resources'] = @get($sql);
+    }
+    return $dog;
+}
 
 function create_message($data){
     insertIntoTable('message',$data);return 1;
+}
+
+switch ($_option) {
+    case 'customer_dog':
+        if (!@$_SESSION['customer'] && $_option != 'customer_login') {
+            redirect('customer/login');
+        }
+        break;
 }
 
 switch ($_option) {
@@ -21,7 +37,7 @@ switch ($_option) {
         view('public/home');
         break;
     case 'about':
-        view('public/about');
+        view('public/about', ['view' => 'about']);
         break;
     case 'adopt':
         $filters_ = array_map(function ($filter) {
@@ -36,11 +52,26 @@ switch ($_option) {
         $filters = implode(';', $filters___);
         view('public/adopt', [
             'dogs' => get_dogs($filters),
-            'filters' => $filters__
+            'filters' => $filters__,
+            'view' => 'adopt'
         ]);
         break;
+    case 'dog_show':
+        $dog = get_dog($_GET['id'],1);
+        if (!@$dog) {
+            redirect('error');
+        }
+        view('public/dog', [
+            'dog' => $dog,
+            'view' => 'adopt'
+        ]);
+        break;
+    case 'dog_inscribe_adoption':
+        break;
     case 'contact':
-        view('public/contact');
+        view('public/contact', [
+            'view' => 'contact'
+        ]);
         break;
     case 'contact_captcha':
         $captcha_length = 5;
@@ -87,6 +118,38 @@ switch ($_option) {
             'En estos momentos tenemos problemas para enviar el mensaje.'
         );
         redirect('contact');
+        break;
+    case 'customer_login':
+        if(notFirstTime() && !empty($userdata = validUser($_POST, 'customer')) && validCaptcha('customer')){
+            session_restart();
+            $_SESSION['customer'] = $userdata;
+            $_SESSION['LAST_ACTIVITY'] = time();
+            redirect('customer/dog');
+        }else{
+            $error_login = notFirstTime();
+            $message_err = !validCaptcha('customer') ? 'Captcha no coincide' : ($error_login ? 'Usuario o clave no válidos' : '');
+            if(!$error_login){
+                session_restart();
+                $_SESSION['customer_times'] = 1;
+            }else{
+                $_SESSION['customer_times']++;
+                if($_SESSION['customer_times'] >= 4){
+                    $_SESSION['customer_captcha'] = rand(1000, 1000000);
+                    $addend = rand(0, 1000);
+                    $_SESSION['customer_question'] = '¿Cuánto es ' . ($addend) . ' + ' . ($_SESSION['customer_captcha'] - $addend) . '?';
+                }
+            }
+            view('public/_login', [
+                'error_login' => $error_login,
+                'message_err' => $message_err,
+                'view' => 'login'
+            ]);
+        }
+        break;
+    case 'customer_dog':
+        view('public/dashboard', [
+            'view' => 'dashboard'
+        ]);
         break;
     case 'error':
         view('public/_error');
