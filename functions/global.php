@@ -1,35 +1,42 @@
 <?php
 
-define('INTR',include("settings/interface.php"));
-define('ENVR',include("settings/environment.php"));
-define('THEME','light');
-
-# SETTINGS HELPER
-function int($obj,$mode){return @INTR['interfaces'][$mode][$obj] ?: @INTR['interfaces'][@INTR['default']][$obj];}
-function env($obj){return @ENVR['environments'][@ENVR['current']][$obj];}
+# HELPERs HELPERS
+function _domain () {
+    return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'];
+}
+function _subdir () {
+    $limit_subdir = strpos(strtolower($_SERVER['PHP_SELF']), 'index.php');
+    return substr(strtolower($_SERVER['PHP_SELF']), 0, $limit_subdir);
+}
 
 # ROUTE HELPERS
-function route($str,$mode){return @(env('domain').@int('htname',$mode)."{$str}");}
-function asset($str){return env('domain')."assets/$str";}
-function json($str){return json_decode(file_get_contents(asset('docs/'.$str)),true);}
-function redirect($str){header("Location: $str");exit();}
+function url ($uri) {
+    return _domain() . _subdir() . $uri;
+}
+function current_route () {
+    $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+    $limit_subdir = strlen(_subdir());
+    return substr($path, $limit_subdir);
+}
+function asset ($file_path) {
+    return url('assets/'.$file_path);
+}
+function redirect ($uri) {
+    header("Location: " . url($uri));exit();
+}
 
 # VIEW HELPERS
-function view($str,$data=[]){$GLOBALS['view_variables']=[];
-	array_map(function($i,$v){$GLOBALS['view_variables'][$i]=$v;},array_keys($data),$data);
-    extract((array)@$GLOBALS['layout_variables']);extract((array)@$GLOBALS['view_variables']);
-	$page=@include("settings/view.php");$page=@$page[$str];include("views/$str.php");
+function view($path, $data = []){
+    $GLOBALS['view_variables'] = [];
+	array_map(function ($i, $v) {$GLOBALS['view_variables'][$i] = $v;}, array_keys($data), $data);
+    extract((array)@$GLOBALS['view_variables']);
+	include("views/$path.php");
 }
-function create($str,$fun){return $GLOBALS['place'][$str] = $fun;}
-function place($str){return (@$GLOBALS['place'][$str]?:function(){})();}
-
-# OTHER HELPERS
-function capitalize($str){return strtoupper($str[0]).substr($str,1);}
-function css_vars($vars){$temp=[];foreach($vars as $var=>$val){$temp[]= $var.':'.$val;}return implode(';',$temp);}
-function text2html($text){
-    $str="";for($i=0,$j=0;$i<strlen($text);$i++){
-        $str.=($text[$i]=='*'&&!(@$text[$i-1]=="*"&&@$text[$i+1]=="*"))?((++$j)%2==1?"<strong>":"</strong>"):$text[$i];
-    }return '<p>'.$str.'</p>';
+function create($id, $function){
+    return $GLOBALS['place'][$id] = $function;
+}
+function place($str){
+    return (@$GLOBALS['place'][$str] ?: function(){})();
 }
 
 ?>

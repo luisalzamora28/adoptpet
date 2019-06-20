@@ -1,0 +1,9 @@
+/*------------------------------------------TABLA*/
+.st-wrapper{width:100%;overflow-x:auto;}
+.st-wrapper>table{width:100%;border-collapse:collapse;min-width:600px;}
+.st-wrapper>table>thead>tr{border-bottom:2px solid #ccc;border-top:1px solid #ccc;font-weight:bold;}
+.st-wrapper>table>tbody>tr{border-bottom:1px solid #ccc;}
+.st-wrapper>table>thead>tr>th, .st-wrapper>table>tbody>tr>td{vertical-align:middle;}
+.st-wrapper>table>thead>tr>th+th, .st-wrapper>table>tbody>tr>td+td{border-left:1px solid #ccc;}
+.st-wrapper>table>thead>tr>th{padding:8px 10px;}
+.st-wrapper>table>tbody>tr>td{padding:5px 10px;}

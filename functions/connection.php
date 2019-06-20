@@ -3,11 +3,10 @@
 date_default_timezone_set('America/Lima');
 
 function connect($dbname){
-	try{$db = new PDO("mysql:host=".env('dbserver').";dbname=".$dbname,env('dbuser'),env('dbpass'));
-		if(env('dbserver')!="localhost") $db->query("SET TIME_ZONE = '-5:00'");
+	try{$db = new PDO("mysql:host=localhost;dbname=".$dbname,'root','');
 		$db->query("SET NAMES 'utf8'");return $db;
 	}catch(Exception $e){echo "Failed: ".$e->getMessage();}
-}$db = connect(env('dbname'));
+}$db = connect('adoptpet');
 
 function exe($sql){global $db;$q=$db->prepare($sql);$q->execute();return $q;}
 function get($sql){$q=exe($sql);return $q->fetchAll(PDO::FETCH_ASSOC) ?: [];}
@@ -27,8 +26,8 @@ function updateTableTuple($table,$data,$column){
 	}$newValues = implode(',',$newValues);
 	exe("UPDATE $table SET $newValues WHERE `$column` = '{$data[$column]}'");
 }
-function getLastId($table,$column='id'){
-	return get("SELECT $column FROM $table ORDER BY $column DESC LIMIT 0,1")[0][$column];
+function getLastId($table){
+	return get("SELECT id FROM $table ORDER BY id DESC LIMIT 0,1")[0]['id'];
 }
 
 ?>

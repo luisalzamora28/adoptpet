@@ -1,6 +1,6 @@
 /*----------------------------------------GENERAL*/
-*{margin:0px;padding:0px;font-family:"Segoeuisl";}
-html,body{height:100%;min-height:400px;position:relative;background-color:var(--main-bgc);}
+*{margin:0px;padding:0px;font-family:"Calibri";}
+html,body{height:100%;min-height:400px;position:relative;background-color:#fff;}
 body>*{width:100%;}
 a:any-link,a:any-link:visited{color:inherit;text-decoration:none;}
 a:-webkit-any-link{color:inherit;text-decoration:none;}
@@ -8,15 +8,14 @@ a:-moz-any-link{color:inherit;text-decoration:none;}
 a:-ms-any-link,a:-ms-any-link:visited{color:inherit;text-decoration:none;}
 .contentWrapper{width:calc(100% - 40px);max-width:1000px;height:100%;margin:auto;position:relative;}
 .boxed{box-sizing:border-box;-webkit-bok-sizing:border-box;}
-.block{margin-bottom:20px;border:1px solid var(--main-bc);padding:20px 10px;}
+.block{margin-bottom:20px;border:1px solid #ccc;padding:20px 10px;}
 .block{border-left:none;border-right:none;}
 .trans, a,input,button,textarea,select{-webkit-transition:all 200ms ease;-moz-transition:all 200ms ease;}
 .trans. a,input,button,textarea,select{-o-transition:all 200ms ease;transition:all 200ms ease;}
 .bgFull{background-size:cover;background-color:rgba(0,0,0,0.6);background-position:50% 50%;}
 .bgContain{background-size:contain;background-repeat:no-repeat;background-position:50% 50%;}
-@font-face{font-family:'Roboto';src:url('../../fonts/Raleway/raleway_thin.ttf');}
 /*-----------------------------------------LOADER*/
-.page-loader{position:fixed;background-color:var(--main-bgc);bottom:0;right:0;left:0;top:0;z-index:9998;}
+.page-loader{position:fixed;background-color:#fff;bottom:0;right:0;left:0;top:0;z-index:9998;}
 .loader{position:absolute;border-left:2px solid #777;border-top:2px solid rgba(100,100,100,0.4);}
 .loader{border-right:2px solid rgba(100,100,100,0.4);border-bottom:2px solid rgba(100,100,100,0.4);}
 .loader{height:46px;width:46px;left:50%;top:50%;margin:-23px 0 0 -23px;text-indent:-9999em;font-size:10px;}
@@ -41,11 +40,38 @@ header>.contentWrapper>*{display:block;margin:auto;width:auto;position:absolute;
 #menu+nav>a{border-radius:15px;text-decoration:none;}
 #menu+nav>a:hover{border:1px solid #ccc;background-color:#2f8036;}
 /*-----------------------------------------SCROLL*/
+/*-------------------------------------------MAIN*/
+main{height:100%;}
+#slider{width:100%;height:100%;}
+#slider .slick-list{height:100%;width:100%;}
+#slider .slick-track{height:100%;width:100%;}
+#slider .slick-item{height:100%;position:relative;}
+#slider .slick-item:focus{outline:none;}
+#slider .slide-data{position:absolute;bottom:60px;left:50%;transform:translate(-50%,0%);}
+#slider .slide-data .title{text-align:center;font-family:"Calibri";font-size:60px;color:#fff;}
 /*----------------------------------------SECTION*/
 section{padding-top:70px;min-height:calc(100% - 70px);}
 h2{text-align:center;}
 hr{border:none;border-bottom:1px solid #ccc;margin-bottom:20px;}
 p{margin-bottom:20px;text-align:justify;}
+main+section{padding-top:0px;min-height:0px;height:auto;}
+main+section>.contentWrapper{width:100%;max-width:none;}
+
+.sf-input, .sf-textarea, .sf-label{width:calc(100%);margin:0px 0px 10px 0px;}
+.sf-pair-container{width:auto;padding:0px 10px;float:left;}
+#dogsWrapper{content:"";display:table;clear:both;}
+#dogsWrapper>.dog{float:left;display:block;}
+#dogsWrapper>.dog>.details{background-color:#eee;padding:5px;}
+
+#title{text-align:center;font-size:40px;font-weight:bold;margin:40px auto;}
+#message{margin:20px;line-height:24px;font-size:18px;margin-bottom:40px;}
+label{font-weight:bold;}
+#captchaWrapper:after{content:"";display:table;clear:both;}
+#captchaWrapper>*{display:block;float:left;}
+#captcha{margin-left:10px;}
+#captchaWrapper>a{width:39px;height:39px;line-height:39px;text-align:center;font-size:19px;background-color:#ddd;}
+#captchaWrapper>a:hover{background-color:#ccc;}
+#captchaWrapper>input{width:calc(100% - 150px - 20px);margin-left:0px;}
 /*-----------------------------------------FOOTER*/
 footer{background-color:#2f3640f0;color:#fff;}
 /*-------------------------------------RESPONSIVE*/
